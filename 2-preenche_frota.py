@@ -1,29 +1,26 @@
+def define_posicoes(linha, coluna, orientacao, tamanho):
+    if tamanho == 1:
+        lista = [[int(linha),int(coluna)]]
+        return lista   
+    else:
+        if orientacao == "vertical":
+            lista = []
+            for i in range(tamanho):
+                lista.append([int(linha)+i,int(coluna)])
+            
+        if orientacao == "horizontal":
+            lista = []
+            for i in range(tamanho):
+                lista.append([int(linha) ,int(coluna)+ i])
+
+    return lista
+
 def preenche_frota(frota,nome_navio,linha,coluna,orientacao,tamanho):
     #criar um indice caso ele não exista 
     if nome_navio not in frota:
         frota[nome_navio] = []
     #cria uma lista vazia para um novo navio
-    navio_novo = []
-    #preenche a lista de coordenadas de acordo com o tamanho do navio
-    for listas_coordenada in range(tamanho):
-        navio_novo.append([])
-    
-    #preenche coordenadas de acordo com a orientação
-    if orientacao == 'vertical':
-        for coordenadas_x in navio_novo:
-            coordenadas_x.append(linha)
-            linha+=1
-        for coordenadas_y in navio_novo:
-            coordenadas_y.append(coluna)
-
-    if orientacao == 'horizontal':
-        for coordenadas_x in navio_novo:
-            coordenadas_x.append(linha)
-        for coordenadas_y in navio_novo:
-            coordenadas_y.append(coluna)
-            coluna+=1
-
-
+    navio_novo = define_posicoes(linha, coluna, orientacao, tamanho)
     #adiciona navio novo à frota 
     frota[nome_navio].append(navio_novo)
     return frota
