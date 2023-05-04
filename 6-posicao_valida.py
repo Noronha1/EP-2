@@ -18,7 +18,7 @@ def define_posicoes(linha, coluna, orientacao, tamanho):
 
 
 
-def posicao_valida(navios,linha, coluna,orientacao, tamanho):
+def posicao_valida(frota,linha, coluna,orientacao, tamanho):
     navio_novo = define_posicoes(linha, coluna, orientacao, tamanho)
     
     
@@ -27,9 +27,9 @@ def posicao_valida(navios,linha, coluna,orientacao, tamanho):
         for x_e_y in coordenadas:
             if x_e_y >=10:
                 return False
-        for checando_navios in navios.values():
+        for checando_navios in frota.values():
             for checando_coordenadas in checando_navios:
                 if coordenadas in checando_coordenadas:
                     return False
     
-    return True 
+    return True
