@@ -1,3 +1,5 @@
+import random
+random.seed(2)
 jogando = True
 def faz_jogada(tabuleiro,linha,coluna):
     if tabuleiro[linha][coluna] == 1:
@@ -285,11 +287,27 @@ while jogando:
         jogando = False
         break
     
-    
-
-    
 
 
+    inimigo = True
+    while inimigo == True:
+        valido2 = 1
+        linha3 = random.randint(0,9)
+        coluna3 = random.randint(0,9)
+        atual2 = [linha3,coluna3]
 
+        if atual2 in usadas2:
+            valido2 = 0
         
+        if valido2 == 1:
+            usadas2.append(atual2)
+            tabuleiro_jogador = faz_jogada(tabuleiro_jogador,linha3,coluna3)
+            print('Seu oponente está atacando na linha {0} e coluna {1}'.format(linha3,coluna3))
+        afundou2 = afundados(frota,tabuleiro_jogador)
+        if afundou2 >= 10:
+            print('Xi! O oponente derrubou toda a sua frota =(')
+            jogando = False
+        if valido2 == 1:
+            inimigo = False       
+
 
